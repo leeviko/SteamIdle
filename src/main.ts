@@ -1,15 +1,19 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import { createCookies, isAuth } from './auth';
+import { createCookies } from './auth';
+import { Settings } from './settings';
 
 async function Init() {
-  if (await isAuth('username')) {
-    console.log('Logged in');
-  } else {
-    console.log('Not logged in');
-    createCookies();
+  if (!Settings.Auth.steamLoginSecure) {
+    console.log('- Login into Steam');
+    await createCookies();
   }
 }
 
-Init();
+try {
+  Init();
+} catch (err) {
+  console.log('- Error on Init function');
+  console.log('--- ', err);
+}
