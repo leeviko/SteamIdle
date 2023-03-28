@@ -1,4 +1,4 @@
-import type { Protocol } from 'puppeteer';
+import type { Page, Protocol } from 'puppeteer';
 
 type Cookie = Protocol.Network.Cookie;
 

@@ -1,14 +1,17 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import { createCookies } from './auth';
+import { getAndSaveCreds } from './auth';
+import { getBadges } from './badges';
 import { Settings } from './settings';
 
 async function Init() {
   if (!Settings.Auth.steamLoginSecure) {
     console.log('- Login into Steam');
-    await createCookies();
+    await getAndSaveCreds();
   }
+
+  await getBadges();
 }
 
 try {

@@ -1,15 +1,19 @@
+import type { Protocol } from 'puppeteer';
+
 export type TSettings = {
   Auth: {
-    steamLoginSecure: string | null;
-    sessionid: string | null;
-    steamid: string | null;
+    steamLoginSecure: string;
+    sessionid: string;
+    steamid: string;
   };
+  Cookies: Protocol.Network.Cookie[];
 };
 
 export const Settings: TSettings = {
   Auth: {
-    steamLoginSecure: null,
-    sessionid: null,
-    steamid: null,
+    steamLoginSecure: '',
+    sessionid: '',
+    steamid: '',
   },
+  Cookies: [],
 };
